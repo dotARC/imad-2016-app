@@ -2,6 +2,8 @@ body {
     font-family: sans-serif;
     background-color: steelblue;
     margin-top: 75px;
+    color: white;
+    animation: mymove 5s infinite;
 }
 
 .center {
