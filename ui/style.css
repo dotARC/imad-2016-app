@@ -18,6 +18,10 @@ body {
     font-weight: bold;
 }
 
+.img-small {
+    height: 50px;
+}
+
 .img-medium {
     height: 200px;
 }
