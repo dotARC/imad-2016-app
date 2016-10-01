@@ -16,6 +16,9 @@ app.get('/article-one',function(req,res) {
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
+app.get('/ui/black-thread.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'black-thread.png'));
+});
 
 app.get('/ui/LOGO1.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'LOGO1.png'));
