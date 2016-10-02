@@ -12,7 +12,7 @@ body {
     animation: fadein;  
 }
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: black;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -64,10 +64,6 @@ body {
 
 .bold {
     font-weight: bold;
-}
-
-.img-small {
-    height: 50px;
 }
 
 .img-medium {
