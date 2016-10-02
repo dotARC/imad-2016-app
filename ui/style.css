@@ -12,10 +12,11 @@ body {
     animation: fadein;  
 }
 .dropbtn {
-    background-color: black;
-    color: orange;
+           background-color: #795548;
+    font-family: -webkit-body;
+    color: #fffdfc;
     padding: 16px;
-    font-size: 16px;
+    font-size: 18px;
     border: none;
     cursor: pointer;
 }
