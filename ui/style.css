@@ -1,5 +1,5 @@
 body {
-       background-image: url('http://westinghouse.com/wp-content/themes/westinghouse/images/daughter/white-background.png'); 
+       background-image: url('/ui/white-background.png'); 
   height: 100%;
   -webkit-background-size: cover;
      -moz-background-size: cover;
