@@ -66,7 +66,7 @@ body {
 }
 
 .container {
-    background-image: url("/ui/white-background.png");
+                     background-image: url("http://westinghouse.com/wp-content/themes/westinghouse/images/daughter/white-background.png");
                      max-width: 800px;
                      margin: 0 auto;
                      color: #2f2c2b;
