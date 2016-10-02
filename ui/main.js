@@ -1,28 +1,22 @@
 console.log('Loaded!');
 
-var main = function() {
-  /* Push the body and the nav over by 285px over */
-  $('.icon-menu').click(function() {
-    $('.menu').animate({
-      left: "0px"
-    }, 200);
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 
-    $('body').animate({
-      left: "285px"
-    }, 200);
-  });
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
 
-  /* Then push them back */
-  $('.icon-close').click(function() {
-    $('.menu').animate({
-      left: "-285px"
-    }, 200);
-
-    $('body').animate({
-      left: "0px"
-    }, 200);
-  });
-};
-
-
-$(document).ready(main);
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
