@@ -1,10 +1,4 @@
 body {
-       background-image: url('/ui/white-background.png'); 
-  height: 100%;
-  -webkit-background-size: cover;
-     -moz-background-size: cover;
-       -o-background-size: cover;
-          background-size: cover;
     font-family: italics;
     background-color: white;
     margin-top: 75px;
