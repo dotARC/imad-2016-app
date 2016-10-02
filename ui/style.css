@@ -12,7 +12,7 @@ body {
     animation: fadein;  
 }
 .dropbtn {
-    background-color: black;
+    background-color: lightgrey;
     color: white;
     padding: 16px;
     font-size: 16px;
