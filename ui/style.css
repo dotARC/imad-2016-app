@@ -65,6 +65,10 @@ body {
     height: 200px;
 }
 
+.prof-img {
+    height: 200px 
+}
+
 .container {
                      background-image: url(ui/white-background.png);
                      height: 100;
