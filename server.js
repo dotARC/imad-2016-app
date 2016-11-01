@@ -13,6 +13,18 @@ app.get('/article-one',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'article-one.html')); 
 });
 
+var comments=[];
+app.get('/submit_comment',function(req,res){
+    //to get the comments
+ var comment=req.query.comment;
+ comments.push(comment);
+ console.log('comments is: ',comments);
+ res.send(JSON.stringify(comments));
+
+    //to render those comments on the page
+});
+
+
 app.get('/profile',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'Profile.html')); 
 });
