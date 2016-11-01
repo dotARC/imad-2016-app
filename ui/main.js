@@ -20,6 +20,24 @@ window.onclick = function(event) {
     }
   }
 }
+
+//autoplay video background 
+(function() {
+  /**
+   * Video element
+   * @type {HTMLElement}
+   */
+  var video = document.getElementById("bgvideo");
+
+  /**
+   * Check if video can play, and play it
+   */
+  video.addEventListener( "canplay", function() {
+    video.play();
+  });
+})();
+
+//return comment typed in comment box
 var commentBtn = document.getElementById('comment_btn');
 commentBtn.onclick = function (){
    var commentInput = document.getElementById('comment');
