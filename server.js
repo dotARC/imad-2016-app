@@ -29,6 +29,9 @@ app.get('/profile',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'Profile.html')); 
 });
 
+app.get('/ui/welcome.mp4', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
