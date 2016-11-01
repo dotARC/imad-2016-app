@@ -19,21 +19,6 @@ body {
   background-size: cover;
 }
 
-.getstarted button { 
-  display: block;
-  width: 80%;
-  border: none; 
-  margin: 1rem auto; 
-  font-size: 1.3rem;
-  color: #fff;
-  border-radius: 3px; 
-  cursor: pointer;
-  transition: .3s background;
-}
-.getstarted button:hover { 
-   background: rgba(0,0,0);
-}
-
 .dropbtn {
            background-color: #795548;
     font-family: -webkit-body;
