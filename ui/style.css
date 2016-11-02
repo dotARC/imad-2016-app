@@ -21,13 +21,17 @@ body {
 
 .button {
     
-        width:20%;
      text-align: center;
       font-weight: bold;
-      background-color: transparent;
+      border: 2px dashed #226fbe;
+      background: transparent;
       color:brown;
     vertical-align: middle;
    
+}
+.button:hover {
+    	background: transparent;
+	color: #226fbe;
 }
 
 .dropbtn {
