@@ -20,13 +20,13 @@ body {
 }
 
 .getstarted {
-       padding-right:50;
+       padding-right:500;
        height: 100%;
        vertical-align: middle; 
 }
 
 .button {
-    padding-right:50;
+    padding-right:500;
     vertical-align: middle;
     height: 300px;
 }
