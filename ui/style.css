@@ -20,6 +20,7 @@ body {
 }
 
 .button {
+     text-align: center;
     padding-right:500;
     vertical-align: middle;
     height: 300px;
