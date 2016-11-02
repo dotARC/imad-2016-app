@@ -20,8 +20,8 @@ body {
 }
 
 .button {
-   
-    margin:60px 590px;;
+    border-color:brown;
+    margin:60px 580px;;
     text-decoration: none;
     display: inline-block;
     transition-duration: 0.4s;
