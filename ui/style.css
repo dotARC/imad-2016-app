@@ -20,7 +20,9 @@ body {
 }
 
 .button {
+    
      text-align: center;
+      font-weight: bold;
     padding-right:500;
     vertical-align: middle;
     height: 300px;
