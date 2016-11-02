@@ -20,18 +20,26 @@ body {
 }
 
 .button {
-    
-     text-align: center;
+     background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
       font-weight: bold;
-      border: 2px dashed #226fbe;
       background: transparent;
-      color:brown;
     vertical-align: middle;
    
 }
 .button:hover {
     	background: transparent;
-	color: #226fbe;
+    	 background-color: #555555;
+    color: white;
 }
 
 .dropbtn {
