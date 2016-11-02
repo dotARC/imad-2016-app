@@ -20,11 +20,12 @@ body {
 }
 
 .button {
-     
+      margin-top: 5px;
+        margin-bottom: 5px;
+        width:20%;
      text-align: center;
       font-weight: bold;
       background-color: transparent;
-      border: 5px;
       color:brown;
     vertical-align: middle;
    
