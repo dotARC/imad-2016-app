@@ -21,7 +21,7 @@ body {
 
 .button {
     
-    text-align: center;
+    margin:500px 500px;;
     text-decoration: none;
     display: inline-block;
     transition-duration: 0.4s;
