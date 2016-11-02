@@ -2,9 +2,7 @@ body {
   
     font-family: italics;
     background-color: white;
-    margin-top: 75px;
-    color: black;
-    animation: fadein;  
+    
 }
 
 .video {
@@ -20,7 +18,7 @@ body {
 }
 
 .getstarted {
-       width: 960px;
+       padding-right:50;
        height: 100%;
        vertical-align: middle; 
 }
