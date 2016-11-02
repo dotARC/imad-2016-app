@@ -20,12 +20,14 @@ body {
 }
 
 .button {
-    
+     
      text-align: center;
       font-weight: bold;
+      background-color: transparent;
+      border: 5px;
       color:brown;
     vertical-align: middle;
-    height: 300px;
+   
 }
 
 .dropbtn {
