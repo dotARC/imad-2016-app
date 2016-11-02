@@ -1,5 +1,21 @@
 console.log('Loaded!');
 
+//autoplay video background 
+(function() {
+  /**
+   * Video element
+   * @type {HTMLElement}
+   */
+  var video = document.getElementById("bgvideo");
+
+  /**
+   * Check if video can play, and play it
+   */
+  video.addEventListener( "canplay", function() {
+    video.play();
+  });
+})();
+
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -20,22 +36,6 @@ window.onclick = function(event) {
     }
   }
 }
-
-//autoplay video background 
-(function() {
-  /**
-   * Video element
-   * @type {HTMLElement}
-   */
-  var video = document.getElementById("bgvideo");
-
-  /**
-   * Check if video can play, and play it
-   */
-  video.addEventListener( "canplay", function() {
-    video.play();
-  });
-})();
 
 //return comment typed in comment box
 var commentBtn = document.getElementById('comment_btn');
