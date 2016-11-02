@@ -2,7 +2,9 @@ body {
   
     font-family: italics;
     background-color: white;
-    
+     margin-top: 75px;
+    color: black;
+    animation: fadein; 
 }
 
 .video {
@@ -24,8 +26,8 @@ body {
 }
 
 .button {
+    padding-right:50;
     vertical-align: middle;
-    width: 300px;
     height: 300px;
 }
 
