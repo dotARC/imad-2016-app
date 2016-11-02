@@ -20,8 +20,8 @@ body {
 }
 
 .button {
-    
-    margin:70px 500px;;
+   
+    margin:70px 520px;;
     text-decoration: none;
     display: inline-block;
     transition-duration: 0.4s;
@@ -29,7 +29,10 @@ body {
       font-size: 30px;
       background: transparent;
     vertical-align: middle;
-   
+}
+
+.button:hover {
+     background-color: brown;
 }
 
 .dropbtn {
