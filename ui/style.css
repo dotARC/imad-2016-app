@@ -23,6 +23,7 @@ body {
     border-color:brown;
     border-width:5;
     font-family:impact;
+    text-decoration: none;
     margin:60px 580px;
     display: inline-block;
     transition-duration: 0.4s;
