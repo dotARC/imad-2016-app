@@ -1,6 +1,6 @@
 body {
   
-    font-family: italics;
+    font-family: sans-serif;
     background-color: white;
      margin-top: 60px;
     color: black;
@@ -21,11 +21,11 @@ body {
 
 .button {
     border-color:brown;
-    margin:60px 580px;;
-    text-decoration: none;
+    border-width:5;
+    font-family:impact;
+    margin:60px 580px;
     display: inline-block;
     transition-duration: 0.4s;
-    cursor: pointer;
       font-size: 30px;
       background: transparent;
     vertical-align: middle;
