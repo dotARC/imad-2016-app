@@ -38,22 +38,22 @@ body {
 }
 
 .buttona1 {
-       background-color: black;
+         background-color: #9E9E9E;
     font-family: -webkit-body;
     color: #fffdfc;
-    padding: 16px;
-     margin: 60px 600px;
+    margin: 0px 550px;
+    width: 110;
     font-size: 18px;
     border: none;
     cursor: pointer;
 }
 
 .buttona2 {
-       background-color: black;
+         background-color: #9E9E9E;
     font-family: -webkit-body;
-     margin: 60px 700px;
     color: #fffdfc;
-    padding: 16px;
+    margin: 0px 700px;
+    width: 110;
     font-size: 18px;
     border: none;
     cursor: pointer;
@@ -131,7 +131,7 @@ body {
 }
 
 .container {
-                     background-image: url(ui/white-background.png);
+                    
                      height: 100;
                      max-width: 800px;
                      margin: 0 auto;
