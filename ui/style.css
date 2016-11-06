@@ -58,7 +58,17 @@ body {
     border: none;
     cursor: pointer;
 }
-
+ .commentbox{
+     width: 600px;
+     height:100px;
+ }
+ 
+ .btn btn-warning {
+      font-family: -webkit-body;
+       background: transparent;
+      font-size: 30px;
+       border-width: 2px;
+ }
 .dropbtn {
            background-color: black;
     font-family: -webkit-body;
