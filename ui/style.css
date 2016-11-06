@@ -37,7 +37,7 @@ body {
      background-color:  #b72424;
 }
 
-.buttona1 {
+.button1 {
          background-color: #9E9E9E;
     font-family: -webkit-body;
     color: #fffdfc;
@@ -48,7 +48,7 @@ body {
     cursor: pointer;
 }
 
-.buttona2 {
+.button2 {
          background-color: #9E9E9E;
     font-family: -webkit-body;
     color: #fffdfc;
@@ -64,11 +64,15 @@ body {
      height:100px;
  }
  
- .btn btn-warning {
-      font-family: -webkit-body;
-       background: transparent;
-      font-size: 30px;
-       border-width: 2px;
+#comment_btn {
+          background-color: #9E9E9E;
+    font-family: -webkit-body;
+    color: #fffdfc;
+    width: 110;
+    font-size: 18px;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
  }
 .dropbtn {
            background-color: black;
