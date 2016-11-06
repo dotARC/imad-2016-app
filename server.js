@@ -90,7 +90,7 @@ app.get('/home',function(req,res) {
 });
 
 app.get('/article-one',function(req,res) {
-    res.send(createTemplate(blog));
+    res.sendfile(path.join(_dirname,'ui','article-one.html'));
 });
 
 var comments=[];
