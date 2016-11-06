@@ -104,7 +104,6 @@ app.get('/submit_comment',function(req,res){
     //to render those comments on the page
 });
 
-
 app.get('/profile',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'Profile.html')); 
 });
