@@ -45,6 +45,7 @@ body {
     width: 110;
     font-size: 18px;
     border: none;
+    display: inline-block;
     cursor: pointer;
 }
 
@@ -56,6 +57,7 @@ body {
     width: 110;
     font-size: 18px;
     border: none;
+    display: inline-block;
     cursor: pointer;
 }
  .commentbox{
