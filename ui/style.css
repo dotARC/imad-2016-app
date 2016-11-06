@@ -20,12 +20,12 @@ body {
 }
 
 .button {
-    border-color:brown;
-    border-width:5px;
-    width:200px;
-    font-family:impact;
+   border-color: #b72424;
+    border-width: 5px;
+    width: 400px;
+    font-family: impact;
     text-decoration: none;
-    margin:60px 580px;
+    margin: 10px 580px;
     display: inline-block;
     transition-duration: 0.4s;
       font-size: 30px;
@@ -34,7 +34,7 @@ body {
 }
 
 .button:hover {
-     background-color: brown;
+     background-color:  #b72424;
 }
 
 .dropbtn {
