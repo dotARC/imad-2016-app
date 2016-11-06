@@ -9,6 +9,74 @@ app.get('/ui/welcome.mp4', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
 });
 
+var blog ={
+    title:'ARTICLE ONE | MUKESH S',
+    heading:'Article one',
+    date:'sept 30,2016',
+    content:`
+     <p>
+                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+            </p>
+            <p>
+                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+                </p>
+                <p>
+                    This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+                </p>
+                 <br/>
+               <div><h2>Enter comments below :</h2></div>
+             <textarea name='comment' class="commentbox" id='comment'></textarea>
+             <div float:left> <input type="submit" id="comment_btn" value="Submit" class="btn btn-warning" >
+              </div>
+              <hr>
+              <h4>Comments :</h4><br>
+                <span id="comments"></span>`
+              
+} ;
+function createtemplate (data) {
+    var title=data.title;
+    var heading= data.heading;
+    var date=data.date;
+    var content= data.content;
+    
+    var htmltemplate =`
+    <html>
+        <head>
+            <link rel="icon" href="/ui/LOGO1.ico" >
+            <title>
+               ${title}
+            </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" >
+             <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <BODY>
+           
+                <div class="container">
+                <h1>BLOG</h1>
+              
+                
+                <div align="right"> 
+                <a href="/home"><button  class="button1">HOME</button></a>
+                 <a href="/Profile"><button  class="button2">PROFILE</button></a>
+                 </div>
+                 <hr>
+            
+            <h1>
+                ${heading}
+            </h1>
+            <div>
+                ${date}
+            </div>
+            <div>
+                $(content)
+            </div>
+            </div>
+             <script type="text/javascript" src="/ui/main.js" ></script>
+        </BODY>
+    </html>`;
+    return htmltemplate;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -22,7 +90,7 @@ app.get('/home',function(req,res) {
 });
 
 app.get('/article-one',function(req,res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html')); 
+    res.send(createTemplate(blog));
 });
 
 var comments=[];
