@@ -37,8 +37,30 @@ body {
      background-color:  #b72424;
 }
 
+.buttona1 {
+       background-color: black;
+    font-family: -webkit-body;
+    color: #fffdfc;
+    padding: 16px;
+     margin: 60px 600px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.buttona2 {
+       background-color: black;
+    font-family: -webkit-body;
+     margin: 60px 700px;
+    color: #fffdfc;
+    padding: 16px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
 .dropbtn {
-           background-color: #795548;
+           background-color: black;
     font-family: -webkit-body;
     color: #fffdfc;
     padding: 16px;
