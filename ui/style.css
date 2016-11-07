@@ -59,7 +59,7 @@ body {
     display: inline-block;
     cursor: pointer;
 }
- .commentbox{
+#comment {
      width: 600px;
      height:100px;
  }
