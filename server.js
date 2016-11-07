@@ -37,8 +37,8 @@ var blog ={
                  <br/>
                <div><h2>Enter comments below :</h2></div>
              <textarea name='comment' class="commentbox" id='comment'></textarea><br/>
-             <div float:left> <input type="submit" id="comment_btn" value="Submit" class="btn btn-warning"></input>
-              </div>
+              <input type="submit" id="comment_btn" value="Submit" class="btn btn-warning"></input>
+              
               <hr>
               <h4>Comments :</h4><br>
                 <span id="comments"></span>`
