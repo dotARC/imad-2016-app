@@ -9,6 +9,17 @@ app.get('/ui/welcome.mp4', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
 });
 
+var comments=[];
+app.get('/submit_comment',function(req,res){
+    //to get the comments
+ var comment=req.query.comment;
+ comments.push(comment);
+ console.log('comments is: ',comments);
+ res.send(JSON.stringify(comments));
+
+    //to render those comments on the page
+});
+
 var blog ={
     title:'ARTICLE ONE | MUKESH S',
     heading:'Article one',
@@ -25,8 +36,8 @@ var blog ={
                 </p>
                  <br/>
                <div><h2>Enter comments below :</h2></div>
-             <textarea name='comment' class="commentbox" id='comment'></textarea>
-             <div float:left> <input type="submit" id="comment_btn" value="Submit" class="btn btn-warning" >
+             <textarea name='comment' class="commentbox" id='comment'></textarea><br/>
+             <div float:left> <input type="submit" id="comment_btn" value="Submit" class="btn btn-warning"></input>
               </div>
               <hr>
               <h4>Comments :</h4><br>
@@ -93,16 +104,6 @@ app.get('/article-one',function(req,res) {
     res.sendFile(path.join(__dirname,'ui','article-one.html'));
 });
 
-var comments=[];
-app.get('/submit_comment',function(req,res){
-    //to get the comments
- var comment=req.query.comment;
- comments.push(comment);
- console.log('comments is: ',comments);
- res.send(JSON.stringify(comments));
-
-    //to render those comments on the page
-});
 
 app.get('/profile',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'Profile.html')); 
