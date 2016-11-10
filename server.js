@@ -1,9 +1,48 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var pool= require('pg').pool;
 
+var config = {
+    user:'dotarc',
+    database: 'dotarc',
+    host: 'db.hasura.imad.io',
+    port: '5432',
+    password: password.env.DB_PASSWORD
+};
 var app = express();
 app.use(morgan('combined'));
+
+var pool = new pool(config);
+
+app.get('/get-articles', function (req, res) {
+   // make a select request
+   // return a response with the results
+   pool.query('SELECT * FROM article ORDER BY date DESC', function (err, result) {
+      if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          res.send(JSON.stringify(result.rows));
+      }
+   });
+});
+
+app.get('/articles/:articleName', function (req, res) {
+
+	var articleName = req.params.articleName;
+
+	pool.query('SELECT * FROM article WHERE title=$1',[articleName],function(err,result){
+		if(err){
+           res.status(500).send(err.toString());
+       }else{
+           if(result.rows.length === 0){
+           	res.status(404).send('Article Not Found.');
+           }else{
+           	res.send(createTemplate(result.rows[0]));
+           }
+       }
+	});
+});
 
 app.get('/ui/welcome.mp4', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
@@ -76,9 +115,7 @@ function createtemplate (data) {
             <h1>
                 ${heading}
             </h1>
-            <div>
-                ${date}
-            </div>
+            <div>${date.toDateString()}</div>
             <div>
                 $(content)
             </div>
