@@ -22,32 +22,84 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
 
-function hash (input, salt) {
-    // How do we create a hash?
-    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
-    return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
+var pool = new Pool(config);
+
+function createtemplate(data) {
+    var title=data.title;
+    var heading= data.heading;
+    var date= data.date;
+    var content= data.content;
+    
+    var htmltemplate =`
+    <html>
+        <head>
+            <link rel="icon" href="/ui/LOGO1.ico" >
+            <title>
+               ${title}
+            </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" >
+             <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <BODY>
+           
+                <div class="container">
+                <h1>BLOG</h1>
+              
+                
+                <div align="right"> 
+                <a href="/home"><button  class="button1">HOME</button></a>
+                 <a href="/Profile"><button  class="button2">PROFILE</button></a>
+                 </div>
+                 <hr>
+            
+            <h1>
+                ${heading}
+            </h1>
+            <div>${date.toDateString()}</div>
+            <div>
+                $(content)
+            </div>
+            </div>
+            <h4>Comments</h4>
+    
+            <div id="comments">
+             <center>Loading Comments..</center>
+            </div>
+            <div id="comment_form" ></div>
+	
+            </div>
+             <script type="text/javascript" src="/ui/article.js" ></script>
+        </BODY>
+    </html>`;
+    return htmltemplate;
 }
 
+function hash(input,salt){
+	var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
+	return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
+}
 
-app.get('/hash/:input', function(req, res) {
-   var hashedString = hash(req.params.input, 'this-is-some-random-string');
-   res.send(hashedString);
+app.get('/hash/:input', function(req,res){
+	var hashedString = hash(req.params.input, 'this-is-some-string');
+	res.send(hashedString);
 });
 
-app.post('/create-user', function (req, res) {
-   // username, password
-   // {"username": "tanmai", "password": "password"}
-   // JSON
-   var username = req.body.username;
-   var password = req.body.password;
-   var salt = crypto.randomBytes(128).toString('hex');
-   var dbString = hash(password, salt);
-   pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, dbString], function (err, result) {
-      if (err) {
-          res.status(500).send(err.toString());
-      } else {
-          res.send('User successfully created: ' + username);
-      }
+app.post('/create-user', function(req,res){
+
+	var username = req.body.username;
+	var password = req.body.password;
+	if(username === '' || password === ''){
+	    res.status(403).send();
+	    return;
+	}
+	var salt = crypto.randomBytes(128).toString('hex');
+	var dbString = hash(password,salt);
+	pool.query('INSERT INTO "user" (username,password) VALUES ($1, $2)',[username,dbString], function(err,result){
+		if(err){
+           res.status(500).send(err.toString());
+       }else{
+           res.send('User created successfully '+username);
+       }
    });
 });
 
@@ -103,8 +155,6 @@ app.get('/logout', function (req, res) {
    delete req.session.auth;
   res.redirect('/');
 });
-
-var pool = new Pool(config);
 
 app.get('/get-articles', function (req, res) {
    // make a select request
@@ -183,55 +233,7 @@ app.get('/ui/welcome.mp4', function (req, res) {
 });
 
 
-function createtemplate(data) {
-    var title=data.title;
-    var heading= data.heading;
-    var date= data.date;
-    var content= data.content;
-    
-    var htmltemplate =`
-    <html>
-        <head>
-            <link rel="icon" href="/ui/LOGO1.ico" >
-            <title>
-               ${title}
-            </title>
-            <meta name="viewport" content="width=device-width, initial-scale=1" >
-             <link href="/ui/style.css" rel="stylesheet" />
-        </head>
-        <BODY>
-           
-                <div class="container">
-                <h1>BLOG</h1>
-              
-                
-                <div align="right"> 
-                <a href="/home"><button  class="button1">HOME</button></a>
-                 <a href="/Profile"><button  class="button2">PROFILE</button></a>
-                 </div>
-                 <hr>
-            
-            <h1>
-                ${heading}
-            </h1>
-            <div>${date.toDateString()}</div>
-            <div>
-                $(content)
-            </div>
-            </div>
-            <h4>Comments</h4>
-    
-            <div id="comments">
-             <center>Loading Comments..</center>
-            </div>
-            <div id="comment_form" ></div>
-	
-            </div>
-             <script type="text/javascript" src="/ui/article.js" ></script>
-        </BODY>
-    </html>`;
-    return htmltemplate;
-}
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
