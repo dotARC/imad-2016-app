@@ -60,31 +60,6 @@ app.get('/submit_comment',function(req,res){
     //to render those comments on the page
 });
 
-var blog ={
-    title:'ARTICLE ONE | MUKESH S',
-    heading:'Article one',
-    date:'sept 30,2016',
-    content:`
-     <p>
-                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-            </p>
-            <p>
-                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-                </p>
-                <p>
-                    This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-                </p>
-                 <br/>
-               <h2>Enter comments below :</h2>
-             <textarea name='comment' class="commentbox" id='comment'></textarea><br/>
-              <input type="submit" id="comment_btn" value="Submit" class="btn btn-warning" />
-              
-              <hr>
-              <h4>Comments :</h4><br>
-                <span id="comments"></span>`
-              
-} ;
-
 function createtemplate (data) {
     var title=data.title;
     var heading= data.heading;
