@@ -59,12 +59,8 @@ body {
     display: inline-block;
     cursor: pointer;
 }
-#comment {
-     width: 600px;
-     height:100px;
- }
- 
-#comment_btn {
+
+#submit {
           background-color: #9E9E9E;
     font-family: -webkit-body;
     color: #fffdfc;
