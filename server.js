@@ -17,6 +17,7 @@ app.use(morgan('combined'));
 
 function createtemplate(data) {
     var title=data.title;
+    var page=data.page;
     var heading= data.heading;
     var date= data.date;
     var content= data.content;
@@ -34,7 +35,7 @@ function createtemplate(data) {
         <BODY>
            
                 <div class="container">
-                <h1>BLOG</h1>
+                <h1>${page}</h1>
               
                 
                 <div align="right"> 
@@ -78,7 +79,8 @@ app.get('/articles/:articleName', function (req, res) {
            if(result.rows.length === 0){
            	res.status(404).send('Article Not Found.');
            }else{
-           	res.send(createTemplate(result.rows[0]));
+                var articleData = result.rows[0];
+           	res.send(createTemplate(articleData));
            }
        }
 	});
@@ -92,7 +94,9 @@ app.get('/ui/welcome.mp4', function (req, res) {
 });
 
 
-
+app.get('/ui/:fileName', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
+});
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -106,9 +110,7 @@ app.get('/home',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'home.html')); 
 });
 
-app.get('/article-one',function(req,res) {
-    res.sendFile(path.join(__dirname,'ui','article-one.html'));
-});
+
 
 
 app.get('/profile',function(req,res) {
