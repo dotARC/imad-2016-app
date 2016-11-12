@@ -76,7 +76,7 @@ function createtemplate(data) {
             </h1>
             <div>${date.toDateString()}</div>
             <div>
-                $(content)
+                ${content}
             </div>
             </div>
             <h4>Comments</h4>
