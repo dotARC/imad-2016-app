@@ -19,23 +19,7 @@ var config = {
 
 var pool = new Pool(config);
 
-app.get('/article/:articleName', function (req, res) {
 
-	var articleName = req.params.articleName;
-
-	pool.query('SELECT * FROM article WHERE title=$1',[articleName],function(err,result){
-		if(err){
-           res.status(500).send(err.toString());
-       }else{
-           if(result.rows.length === 0){
-           	res.status(404).send('Article Not Found.');
-           }else{
-                var articleData = result.rows[0];
-           	res.send(createTemplate(articleData));
-           }
-       }
-	});
-});
 
 
 app.get('/test-db',function(err,res){
