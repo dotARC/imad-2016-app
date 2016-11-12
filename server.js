@@ -23,6 +23,24 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
 
+var article = {
+    title: 'article-0ne',
+    page: 'Blog',
+    date:'sep-30-2016',
+    heading: 'Article One',
+    content:
+    `
+            <p>
+                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+            </p>
+            <p>
+                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+                </p>
+                <p>
+                    This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+                </p>
+`};
+
 
 function createtemplate(data) {
     var title=data.title;
@@ -174,7 +192,9 @@ app.get('/home',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'home.html')); 
 });
 
-
+app.get('/article', function (req, res) {
+  res.send(createTemplate(article));
+});
 
 
 app.get('/profile',function(req,res) {
