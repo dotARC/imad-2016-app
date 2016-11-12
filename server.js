@@ -23,7 +23,6 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
 
-var pool = new Pool(config);
 
 function createtemplate(data) {
     var title=data.title;
@@ -161,7 +160,6 @@ app.get('/logout', function (req, res) {
    delete req.session.auth;
    res.redirect('/');
 });
-
 
 
 app.get('/', function (req, res) {
