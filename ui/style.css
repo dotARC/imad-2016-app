@@ -139,7 +139,7 @@ body {
 #username, #password {
     width:200px;
     font-size:30px;
-     border-width: 2px;
+     border-width: 5px;
 }
 
 .container {
