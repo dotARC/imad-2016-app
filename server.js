@@ -17,7 +17,7 @@ var config = {
 };
  
 
-var pool = new Pool(config);
+var pool = new pg.Pool(config);
 
 
 
