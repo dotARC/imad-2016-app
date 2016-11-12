@@ -160,6 +160,7 @@ app.get('/logout', function (req, res) {
    res.redirect('/');
 });
 
+var pool = new Pool(configdb);
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
