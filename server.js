@@ -23,7 +23,56 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
 
-
+function createtemplate(data) {
+    var title=data.title;
+    var page=data.page;
+    var heading= data.heading;
+    var date= data.date;
+    var content= data.content;
+    
+    var htmltemplate =`
+    <html>
+        <head>
+            <link rel="icon" href="/ui/LOGO1.ico" >
+            <title>
+               ${title}
+            </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" >
+             <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <BODY>
+           
+                <div class="container">
+                <h1>${page}</h1>
+              
+                
+                <div align="right"> 
+                <a href="/home"><button  class="button1">HOME</button></a>
+                 <a href="/Profile"><button  class="button2">PROFILE</button></a>
+                 </div>
+                 <hr>
+            
+            <h1>
+                ${heading}
+            </h1>
+            <div>${date.toDateString()}</div>
+            <div>
+                $(content)
+            </div>
+            </div>
+            <h4>Comments</h4>
+    
+            <div id="comments">
+             <center>Loading Comments..</center>
+            </div>
+            <div id="comment_form" ></div>
+	
+            </div>
+             <script type="text/javascript" src="/ui/article.js" ></script>
+        </BODY>
+    </html>`;
+    return htmltemplate;
+}
 
 app.get('/ui/welcome.mp4', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
