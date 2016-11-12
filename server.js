@@ -23,6 +23,8 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
 
+var pool = new Pool(config);
+
 function createtemplate(data) {
     var title=data.title;
     var page=data.page;
@@ -160,7 +162,7 @@ app.get('/logout', function (req, res) {
    res.redirect('/');
 });
 
-var pool = new Pool(configdb);
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -180,6 +182,12 @@ app.get('/home',function(req,res) {
 app.get('/profile',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'Profile.html')); 
 });
+
+//When not using database then creating end-point to handle articel request response
+/*app.get('/:articleName', function (req, res) {
+    var articleName=req.params.articleName;
+  res.send(createTemplate(articles[articleName]));
+});*/
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
