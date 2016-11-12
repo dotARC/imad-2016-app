@@ -8,59 +8,8 @@ var pool= require('pg').pool;
 var app = express();
 app.use(morgan('combined'));
 
-var config = {
-    user: 'dotarc',
-    database: 'dotarc',
-    host: 'db.imad.hasura-app.io',
-    port: '5432',
-    password: process.env.DB_PASSWORD
-};
- 
 
-var pool = new Pool(config);
 
-app.get('/test-db',function(err,res){
-   
-   pool.query('SELECT * FROM test',function(err,result){
-       if(err){
-           res.status(500).send(err.toString());
-       }else{
-           res.send(JSON.stringify(result.rows));
-       }
-   });
-});
-
-app.get('/get-articles', function (req, res) {
-   // make a select request
-   // return a response with the results
-   pool.query('SELECT * FROM article ORDER BY date DESC', function (err, result) {
-      if (err) {
-          res.status(500).send(err.toString());
-      } else {
-          res.send(JSON.stringify(result.rows));
-      }
-   });
-});
-
-app.get('/articles/:articleName', function (req, res) {
-  // SELECT * FROM article WHERE title = '\'; DELETE WHERE a = \'asdf'
-  pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function (err, result) {
-    if (err) {
-        res.status(500).send(err.toString());
-    } else {
-        if (result.rows.length === 0) {
-            res.status(404).send('Article not found');
-        } else {
-            var articleData = result.rows[0];
-            res.send(createTemplate(articleData));
-        }
-    }
-  });
-});
-
-app.get('/ui/:fileName', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
-});
 
 app.get('/ui/welcome.mp4', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
