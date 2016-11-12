@@ -52,7 +52,7 @@ body {
          background-color: #9E9E9E;
     font-family: -webkit-body;
     color: #fffdfc;
-    margin: 0px 0px;
+    margin: 0 0;
     width: 110;
     font-size: 18px;
     border: none;
@@ -97,7 +97,7 @@ body {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8 16 0 rgba(0,0,0,0.2);
 }
 
 /* Links inside the dropdown */
@@ -138,6 +138,7 @@ body {
 #username, #password {
     width:200px;
 }
+
 .container {
                     
                      height: 100;
