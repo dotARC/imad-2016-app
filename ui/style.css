@@ -63,12 +63,13 @@ body {
 #submit ,#submit-btn ,#register-btn {
           background-color: #9E9E9E;
     font-family: -webkit-body;
-    color: #fffdfc;
+    
     width: 110;
     font-size: 18px;
     border: none;
     display: inline-block;
     cursor: pointer;
+    color: black;
  }
 .dropbtn {
            background-color: black;
@@ -140,7 +141,6 @@ body {
     width:200px;
     font-size:30px;
      border-width: 5px;
-     border-color:black;
 }
 
 .container {
