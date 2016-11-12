@@ -11,9 +11,9 @@ app.use(morgan('combined'));
 var config = {
     user: 'dotarc',
     database: 'dotarc',
-    host: 'db.hasura.imad.io',
+    host: 'db.imad.hasura-app.io',
     port: '5432',
-    password: password.env.DB_PASSWORD
+    password: process.env.DB_PASSWORD
 };
  
 function createtemplate(data) {
