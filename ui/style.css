@@ -133,12 +133,10 @@ body {
 
 #login-form {
     text-align: center;
-    font-size: 30px;
 }
 
 #username, #password {
     width:200px;
-     font-size: 18px;
 }
 .container {
                     
