@@ -61,9 +61,10 @@ function createTemplate (data) {
       <body>
           <div class="container">
                <h1>${page}</h1> 
-              <div>
-                  <a href="/">Home</a>
-              </div>
+             <div align="right"> 
+                <a href="/home"><button  class="button1">HOME</button></a>
+                 <a href="/Profile"><button  class="button2">PROFILE</button></a>
+                 </div>
               <hr/>
               <h3>
                   ${heading}
@@ -173,7 +174,7 @@ app.get('/check-login', function (req, res) {
 
 app.get('/logout', function (req, res) {
    delete req.session.auth;
-   res.redirect('/');
+   res.redirect('/home');
 });
 
 
