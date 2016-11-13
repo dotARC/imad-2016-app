@@ -1,27 +1,25 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool= require('pg').pool;
+var session = require('express-session');
+var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
-var session = require('express-session');
-
 var config = {
-    user: 'dotarc',
+    user : 'dotarc',
     database: 'dotarc',
     host: 'db.imad.hasura-app.io',
     port: '5432',
     password: process.env.DB_PASSWORD
 };
-
-
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(session({
     secret: 'someRandomtext',
-    cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
+    cookie: {maxAge: 1000*60*60*24*30}
 }));
+
 
 var article = {
     title: 'article-0ne',
@@ -93,6 +91,20 @@ function createTemplate (data) {
 
 app.get('/ui/welcome.mp4', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
+});
+
+var pool = new Pool(config);
+
+
+app.get('/test-db',function(err,res){
+   
+   pool.query('SELECT * FROM test',function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       }else{
+           res.send(JSON.stringify(result.rows));
+       }
+   });
 });
 
 function hash (input, salt) {
@@ -175,19 +187,6 @@ app.get('/check-login', function (req, res) {
 app.get('/logout', function (req, res) {
    delete req.session.auth;
    res.redirect('/home');
-});
-
-var pool = new pg.Pool(config);
-
-app.get('/test-db',function(err,res){
-   
-   pool.query('SELECT * FROM test',function(err,result){
-       if(err){
-           res.status(500).send(err.toString());
-       }else{
-           res.send(JSON.stringify(result.rows));
-       }
-   });
 });
 
 
