@@ -44,6 +44,7 @@ var article = {
 
 function createTemplate (data) {
     var title = data.title;
+    var page = data.page;
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
@@ -59,7 +60,7 @@ function createTemplate (data) {
       </head> 
       <body>
           <div class="container">
-               <h1>${page}</h1>
+               <h1>${page}</h1> 
               <div>
                   <a href="/">Home</a>
               </div>
