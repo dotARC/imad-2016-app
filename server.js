@@ -177,7 +177,7 @@ app.get('/logout', function (req, res) {
    res.redirect('/home');
 });
 
-var pool = new Pool(config);
+var pool = new Pool(configDB);
 
 app.get('/test-db',function(err,res){
    
