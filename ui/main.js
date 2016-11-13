@@ -147,7 +147,7 @@ function loadLoggedInUser(username){
    
     logoutArea.innerHTML = `
         <h6> Hi <i>${username}</i></h6>
-        <a href="/logout">Logout</a>
+        <a href="/logout"><button  class="button1">LOGOUT</button></a>
     `;
 }
 checkLogin();
