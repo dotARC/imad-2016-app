@@ -177,7 +177,7 @@ app.get('/logout', function (req, res) {
    res.redirect('/home');
 });
 
-var pool = new Pool(configDB);
+var pool = new pg.Pool(config);
 
 app.get('/test-db',function(err,res){
    
