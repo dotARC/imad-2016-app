@@ -120,17 +120,6 @@ app.get('/hash/:input', function(req, res) {
 });
 
 
-app.get('/get-articles', function (req, res) {
-   // make a select request
-   // return a response with the results
-   pool.query('SELECT * FROM article ORDER BY date DESC', function (err, result) {
-      if (err) {
-          res.status(500).send(err.toString());
-      } else {
-          res.send(JSON.stringify(result.rows));
-      }
-   });
-});
 app.get('/article/:articleName', function (req, res) {
   // SELECT * FROM article WHERE title = '\'; DELETE WHERE a = \'asdf'
   pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function (err, result) {
@@ -145,6 +134,28 @@ app.get('/article/:articleName', function (req, res) {
         }
     }
   });
+});
+
+app.post('/create-user',function(req,res){
+  //take username and password as input and create entry in user table
+  
+  var username = req.body.username;
+  var password = req.body.password;
+  console.log(username);
+  var salt= crypto.randomBytes(128).toString('hex');
+  var dbString = hash(password,salt);
+  
+  
+  pool.query('INSERT INTO "user"(username,password) VALUES($1,$2)',[username,dbString],function(err,result){
+    if(err){
+      res.status(500).send(err.toString());
+
+    }else{
+      res.send('user succesfully created');
+    }
+  });
+
+
 });
 
 
