@@ -261,7 +261,7 @@ app.get('/home',function(req,res) {
 });
 
 app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleData));
+  res.send(createTemplate(article));
 });
 
 
