@@ -22,6 +22,7 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
 
+
 function createTemplate (data) {
     var title = data.title;
     var page = data.page;
@@ -129,6 +130,25 @@ app.get('/article/:articleName', function (req, res) {
             var article = result.rows[0];
             res.send(createTemplate(article));
         }
+    }
+  });
+});
+
+app.post('/create-user',function(req,res){
+  //take username and password as input and create entry in user table
+  
+  var username = req.body.username;
+  var password = req.body.password;
+  var salt= crypto.randomBytes(128).toString('hex');
+  var dbString = hash(password,salt);
+  
+  
+  pool.query('INSERT INTO "user"(username,password) VALUES($1,$2)',[username,dbString],function(err,result){
+    if(err){
+      res.status(500).send(err.toString());
+
+    }else{
+      res.send('user succesfully created');
     }
   });
 });
