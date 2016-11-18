@@ -1,4 +1,3 @@
-console.log('Loaded!');
 
 //autoplay video background 
 (function() {
@@ -40,7 +39,7 @@ window.onclick = function(event) {
 
 function loadLoginForm () {
     var loginHtml = `
-        <h3>Login/Register to unlock awesome features</h3>
+        <h3>Login/Register here</h3>
         <input type="text" id="username" placeholder="username" />
         <input type="password" id="password" />
         <br/><br/>
@@ -144,24 +143,24 @@ function loadLogin () {
     request.send(null);
 }
 
-function loadArticles () {
+function loadArticle () {
         // Check if the user is already logged in
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
-            var articles = document.getElementById('articles');
+            var article = document.getElementById('article');
             if (request.status === 200) {
                 var content = '<ul>';
                 var articleData = JSON.parse(this.responseText);
                 for (var i=0; i< articleData.length; i++) {
                     content += `<li>
-                    <a href="/articles/${articleData[i].title}">${articleData[i].heading}</a>
+                    <a href="/article/${articleData[i].title}">${articleData[i].heading}</a>
                     (${articleData[i].date.split('T')[0]})</li>`;
                 }
                 content += "</ul>";
-                articles.innerHTML = content;
+                article.innerHTML = content;
             } else {
-                articles.innerHTML('Oops! Could not load all articles!');
+                article.innerHTML('Oops! Could not load all articles!');
             }
         }
     };
@@ -175,4 +174,4 @@ function loadArticles () {
 loadLogin();
 
 // Now this is something that we could have directly done on the server-side using templating too!
-loadArticles();
+loadArticle();
