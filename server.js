@@ -58,11 +58,16 @@ function createTemplate (data) {
               </div>
               <hr/>
               <h4>Comments</h4>
-              <div id="comment_form">
-              </div>
-              <div id="comments">
-                <center>Loading comments...</center>
-              </div>
+              <div class = "commentbox">
+                <ul id="commentlist">
+                    
+                </ul>
+               <p align = "center"> <textarea id = "comment" rows = "8" tabindex = "4" placeholder = "Add a public comment" ></textarea> </p>
+               <br>
+               <p align = "center"><button id = "comment-button" >Submit</button></p>
+            </div>
+            <br>
+            <hr>
           </div>
           <script type="text/javascript" src="/ui/article.js"></script>
       </body>
@@ -153,7 +158,22 @@ app.post('/create-user',function(req,res){
   });
 });
 
-
+var comments = [];
+app.get('/submit-comment',function(req,res){
+   var comment = req.query.comment;//query does  is -> url ://submit-comment?comment=xxxxx;
+    if (comments === undefined)
+  comments = [];  
+  comments.push(comment);
+   res.send(JSON.stringify(comments));
+});
+app.get('/fetchcomments', function(req, res) {
+  var comment = req.query.comment;
+  if (comments !== undefined)
+    res.send(JSON.stringify(comments));
+  else {
+    res.send("null");
+  }
+});
 
 app.get('/ui/:fileName', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
