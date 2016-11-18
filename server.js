@@ -237,7 +237,7 @@ app.get('/article/:articleName', function (req, res) {
             res.status(404).send('Article not found');
         } else {
             var articleData = result.rows[0];
-            res.send(createTemplate(articleData));
+            res.send(createTemplate(article));
         }
     }
   });
@@ -261,7 +261,7 @@ app.get('/home',function(req,res) {
 });
 
 app.get('/article-one', function (req, res) {
-  res.send(createTemplate(article));
+  res.send(createTemplate(articleData));
 });
 
 
@@ -272,7 +272,7 @@ app.get('/profile',function(req,res) {
 //When not using database then creating end-point to handle article request response
 /*app.get('/:articleName', function (req, res) {
     var articleName=req.params.articleName;
-  res.send(createTemplate(articles[articleName]));
+  res.send(createTemplate(article[articleName]));
 });*/
 
 app.get('/ui/style.css', function (req, res) {
@@ -281,6 +281,10 @@ app.get('/ui/style.css', function (req, res) {
 
 app.get('/ui/main.js',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'main.js')); 
+});
+
+app.get('/ui/article.js',function(req,res) {
+    res.sendFile(path.join(__dirname, 'ui', 'article.js')); 
 });
 
 app.get('/ui/black-thread.png', function (req, res) {
