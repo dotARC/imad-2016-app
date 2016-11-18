@@ -60,7 +60,7 @@ body {
     cursor: pointer;
 }
 
-#submit ,#submit-btn ,#register-btn {
+#submit ,#submit_btn  {
           background-color: #9E9E9E;
     font-family: -webkit-body;
     
@@ -132,10 +132,6 @@ body {
     height: 200px;
 }
 
-#login-form {
-    text-align: center;
-    font-size:30px;
-}
 
 #username, #password {
     width:200px;
