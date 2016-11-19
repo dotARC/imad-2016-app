@@ -161,7 +161,6 @@ app.get('/submit_comment',function(req,res){
     //to get the comments
  var comment=req.query.comment;
  comments.push(comment);
- console.log('comments is: ',comments);
  res.send(JSON.stringify(comments));
 
     //to render those comments on the page
@@ -181,10 +180,6 @@ app.get('/UI/LOGO1.ico',function(req,res) {
 
 app.get('/home',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'home.html')); 
-});
-
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(article));
 });
 
 
@@ -219,7 +214,3 @@ app.get('/ui/LOGO1.png', function (req, res) {
 });
 
 
-var port = 8080; // Use 8080 for local development because you might already have apache running on 80
-app.listen(8080, function () {
-  console.log(`IMAD course app listening on port ${port}!`);
-});
