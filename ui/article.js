@@ -24,12 +24,12 @@ commentbtn.onclick = function(){
     //Make request to capture the comment
     var commentInput = document.getElementById('comment');
     var comment = commentInput.value;
-     request.open('GET','http://dotarc.imad.hasura-app.io/submit-comment?comment='+comment,true);
+     request1.open('GET','http://dotarc.imad.hasura-app.io/submit-comment?comment='+comment,true);
    //for local machine 
 
-   request.open('GET', window.location.protocol+'//'+window.location.host+'/submit-comment?comment='+comment, true);
+   request1.open('GET', window.location.protocol+'//'+window.location.host+'/submit-comment?comment='+comment, true);
    //for local machine 
    //request.open('GET',document.URL+'counter',true);
-    request.send(null);
+    request1.send(null);
 };
 }
