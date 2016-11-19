@@ -156,21 +156,15 @@ app.post('/create-user',function(req,res){
   });
 });
 
-var comments = [];
-app.get('/submit-comment',function(req,res){
-   var comment = req.query.comment;//query does  is -> url ://submit-comment?comment=xxxxx;
-    if (comments === undefined)
-  comments = [];  
-  comments.push(comment);
-   res.send(JSON.stringify(comments));
-});
-app.get('/fetchcomments', function(req, res) {
-  var comment = req.query.comment;
-  if (comments !== undefined)
-    res.send(JSON.stringify(comments));
-  else {
-    res.send("null");
-  }
+var comments=[];
+app.get('/submit_comment',function(req,res){
+    //to get the comments
+ var comment=req.query.comment;
+ comments.push(comment);
+ console.log('comments is: ',comments);
+ res.send(JSON.stringify(comments));
+
+    //to render those comments on the page
 });
 
 app.get('/ui/:fileName', function (req, res) {
