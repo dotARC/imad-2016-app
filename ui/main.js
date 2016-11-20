@@ -10,10 +10,11 @@
   /**
    * Check if video can play, and play it
    */
-  video.on('canplay', function() {
+  
     video.play();
-  });
-})();
+  
+});
+
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
