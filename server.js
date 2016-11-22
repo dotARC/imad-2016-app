@@ -57,13 +57,14 @@ function createTemplate (data) {
                 ${content}
               </div>
               <hr/>
-               <label>Enter comments below</label></br>
-             <textarea name='comment' id='comment'></textarea><br />
-              <input type="submit" id="comment_btn" value="Submit" class="btn btn-warning"></input>
-              <hr>
-              <p>Comments :<br>
-                <span id="comments"></span>
-              </p>
+               <h3>Comments</h3>
+    
+            <div id="comments">
+             <center>Loading Comments..</center>
+             </div>
+             <div id="comment_form" ></div>
+	
+             </div>
             <br>
             <hr>
           </div>
@@ -209,15 +210,50 @@ app.get('/logout', function (req, res) {
    res.redirect('/');
 });
 
-var comments=[];
-app.get('/submit_comment',function(req,res){
-    //to get the comments
- var comment=req.query.comment;
- comments.push(comment);
- res.send(JSON.stringify(comments));
-
-    //to render those comments on the page
+app.get('/get-comments/:articleName', function(req,res){
+  pool.query('SELECT comment.*,"user".username FROM article,"user",comment WHERE article.title=$1 AND article.id=comment.article_id AND comment.user_id="user".id ORDER BY comment.timestamp DESC',[req.params.articleName],function(err,result){
+    if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          res.send(JSON.stringify(result.rows));
+      }
+  });
 });
+
+app.post('/submit-comment/:articleName', function(req,res){
+    
+    var comment = req.body.comment;
+    
+    if(comment === ''){
+        res.status(403).send();
+        return;
+    }
+
+  if(req.session && req.session.auth && req.session.auth.userId){
+    pool.query('SELECT * FROM "article" WHERE title=$1',[req.params.articleName],function(err,result){
+      if(err){
+        res.status(500).send(err.toString());
+      }else{
+        if(result.rows.length === 0){
+          res.send('Article not Found.');
+        }else{
+          var articleId = result.rows[0].id;
+          pool.query('INSERT INTO "comment" (comment,user_id,article_id) VALUES ($1,$2,$3)',[comment,req.session.auth.userId,articleId],function(err,result){
+            if(err){
+              res.status(500).send(err.toString());
+            }else{
+              res.status(200).send('Comment Saved.');
+            }
+          });
+        }
+      }
+    });
+  }else{
+    res.status(403).send('Only logged in user can comment');
+  }
+
+});
+
 
 app.get('/ui/:fileName', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
