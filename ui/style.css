@@ -60,7 +60,7 @@ body {
     cursor: pointer;
 }
 
-#submit , #login_btn {
+#submit , #submit-btn , #register-btn {
           background-color: #9E9E9E;
     font-family: -webkit-body;
     
