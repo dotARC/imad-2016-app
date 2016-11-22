@@ -243,7 +243,7 @@ app.post('/submit-comment/:articleName', function (req, res) {
                             if (err) {
                                 res.status(500).send(err.toString());
                             } else {
-                                res.status(200).send('Comment inserted!')
+                                res.status(200).send('Comment inserted!');
                             }
                         });
                 }
@@ -263,7 +263,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/UI/LOGO1.ico',function(req,res) {
+app.get('/ui/LOGO1.ico',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'LOGO1.ico')); 
 });
 
@@ -288,6 +288,10 @@ app.get('/ui/style.css', function (req, res) {
 
 app.get('/ui/main.js',function(req,res) {
     res.sendFile(path.join(__dirname, 'ui', 'main.js')); 
+});
+
+app.get('/ui/login.js',function(req,res) {
+    res.sendFile(path.join(__dirname, 'ui', 'login.js')); 
 });
 
 app.get('/ui/article.js',function(req,res) {
