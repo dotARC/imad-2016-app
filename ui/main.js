@@ -23,4 +23,31 @@ window.onclick = function(event) {
   }
 };
 
-
+setTimeout(glow,50);
+function glow()
+{   
+    if(i<1){
+    document.getElementById("logo").style.opacity=i;
+    i=i+0.1;
+    setTimeout(glow,100);
+    
+    }
+    else
+    {
+        setTimeout(glowagain,50);
+    }
+}
+function glowagain()
+{
+    if(i>0)
+    {
+      document.getElementById("logo").style.opacity=i;
+    i=i-0.1;
+    setTimeout(glowagain,100);
+    
+    }
+    else
+    {
+        setTimeout(glow,100);
+    }
+}
