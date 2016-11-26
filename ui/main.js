@@ -1,32 +1,20 @@
 
 
-setTimeout(glow,50);
-function glow()
-{   
-    if(i<1){
-    document.getElementById("logo").style.opacity=i;
-    i=i+0.1;
-    setTimeout(glow,100);
-    
-    }
-    else
-    {
-        setTimeout(glowagain,50);
-    }
-}
-function glowagain()
+function blinkImg()
 {
-    if(i>0)
-    {
-      document.getElementById("logo").style.opacity=i;
-    i=i-0.1;
-    setTimeout(glowagain,100);
-    
-    }
-    else
-    {
-        setTimeout(glow,100);
-    }
+  var v, t, ele = document.getElementById("logo");
+  if (ele.style.visibility == 'visible') {
+    // hide it, then wait for imgOffTime
+    v = 'hidden';
+    t = imgOffTime;
+  }
+  else {
+    // show it, then wait for imgOnTime
+    v = 'visible';
+    t = imgOnTime;
+  }
+  ele.style.visibility = v;
+  setTimeout(blinkImg(),t);
 }
 
 
