@@ -1,22 +1,13 @@
 
+var img = document.getElementById("logo");
 
-function blinkImg()
-{
-  var v, t, ele = document.getElementById("logo");
-  if (ele.style.visibility == 'visible') {
-    // hide it, then wait for imgOffTime
-    v = 'hidden';
-    t = imgOffTime;
-  }
-  else {
-    // show it, then wait for imgOnTime
-    v = 'visible';
-    t = imgOnTime;
-  }
-  ele.style.visibility = v;
-  setTimeout(blinkImg(),t);
-}
-
+var interval = window.setInterval(function(){
+    if(img.display == 'hidden'){
+        img.style.visibility = 'visible';
+    }else{
+        img.style.visibility = 'hidden';
+    }
+}, 1000);
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
