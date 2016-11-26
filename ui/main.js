@@ -1,14 +1,13 @@
 
-function blinkId(logo) {
-	var i = document.getElementById(logo);
-	if(i.style.visibility=='hidden') {
-		i.style.visibility='visible';
-	} else {
-		i.style.visibility='hidden';
-	}
-    setTimeout("blinkId('"+logo+"')",1000);
-	return true;
-}
+var img = document.getElementById('logo');
+
+var interval = window.setInterval(function(){
+    if(img.display == 'hidden'){
+        img.style.visibility = 'visible';
+    }else{
+        img.style.visibility = 'hidden';
+    }
+}, 1000);
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
