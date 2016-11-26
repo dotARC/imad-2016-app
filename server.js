@@ -57,16 +57,15 @@ function createTemplate (data) {
                 ${content}
               </div>
               <hr/>
-               <h3>Comments</h3>
-    
-            <div id="comments">
-             <center>Loading Comments..</center>
-             </div>
-             <div id="comment_form" ></div>
-	
-             </div>
-            <br>
-            <hr>
+               <h2>Comments</h2>
+              <div id="comment_form">
+              </div>
+              <div id="comments">
+                <center>Loading comments...</center>
+              </div>
+          </div>
+                </div>
+            
           </div>
           <script type="text/javascript" src="/ui/article.js"></script>
       </body>
@@ -76,9 +75,6 @@ function createTemplate (data) {
 }
 
 
-app.get('/ui/welcome.mp4', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
-});
 
 var pool = new Pool(config);
 
@@ -106,55 +102,21 @@ app.get('/hash/:input', function(req, res) {
    res.send(hashedString);
 });
 
-
-
-app.get('/get-articles', function (req, res) {
-   // make a select request
-   // return a response with the results
-   pool.query('SELECT * FROM article ORDER BY date DESC', function (err, result) {
+app.post('/create-user', function (req, res) {
+   // username, password
+   // {"username": "username", "password": "password"}
+   // JSON
+   var username = req.body.username;
+   var password = req.body.password;
+   var salt = crypto.randomBytes(128).toString('hex');
+   var dbString = hash(password, salt);
+   pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, dbString], function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
       } else {
-          res.send(JSON.stringify(result.rows));
+          res.send('User successfully created: ' + username);
       }
    });
-});
-
-
-
-app.get('/article/:articleName', function (req, res) {
-  // SELECT * FROM article WHERE title = '\'; DELETE WHERE a = \'asdf'
-  pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function (err, result) {
-    if (err) {
-        res.status(500).send(err.toString());
-    } else {
-        if (result.rows.length === 0) {
-            res.status(404).send('Article not found');
-        } else {
-            var article = result.rows[0];
-            res.send(createTemplate(article));
-        }
-    }
-  });
-});
-
-app.post('/create-user',function(req,res){
-  //take username and password as input and create entry in user table
-  
-  var username = req.body.username;
-  var password = req.body.password;
-  var salt= crypto.randomBytes(128).toString('hex');
-  var dbString = hash(password,salt);
-  
-  
-  pool.query('INSERT INTO "user"(username,password) VALUES($1,$2)',[username,dbString],function(err,result){
-    if(err){
-      res.status(500).send(err.toString());
-
-    }else{
-      res.send('user succesfully created');
-    }
-  });
 });
 
 app.post('/login', function (req, res) {
@@ -190,6 +152,7 @@ app.post('/login', function (req, res) {
    });
 });
 
+
 app.get('/check-login', function (req, res) {
    if (req.session && req.session.auth && req.session.auth.userId) {
        // Load the user object
@@ -206,10 +169,39 @@ app.get('/check-login', function (req, res) {
 });
 
 app.get('/logout', function (req, res) {
-   delete req.session.auth;
-   res.redirect('/');
+    delete req.session.auth;
+    res.send('<html><body>Logged out!<br/><br/><a href="/">Back to home</a></body></html>');
 });
 
+
+app.get('/article/:articleName', function (req, res) {
+  // SELECT * FROM article WHERE title = '\'; DELETE WHERE a = \'asdf'
+  pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function (err, result) {
+    if (err) {
+        res.status(500).send(err.toString());
+    } else {
+        if (result.rows.length === 0) {
+            res.status(404).send('Article not found');
+        } else {
+            var articleData = result.rows[0];
+            res.send(createTemplate(articleData));
+        }
+    }
+  });
+});
+
+
+app.get('/get-articles', function (req, res) {
+   // make a select request
+   // return a response with the results
+   pool.query('SELECT * FROM article ORDER BY date DESC', function (err, result) {
+      if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          res.send(JSON.stringify(result.rows));
+      }
+   });
+});
 
 app.get('/get-comments/:articleName', function (req, res) {
    // make a select request
@@ -222,6 +214,7 @@ app.get('/get-comments/:articleName', function (req, res) {
       }
    });
 });
+
 
 app.post('/submit-comment/:articleName', function (req, res) {
    // Check if the user is logged in
