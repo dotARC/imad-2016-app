@@ -1,13 +1,5 @@
 
-var img = document.getElementById("logo");
 
-var interval = window.setInterval(function(){
-    if(img.display == 'hidden'){
-        img.style.visibility = 'visible';
-    }else{
-        img.style.visibility = 'hidden';
-    }
-}, 1000);
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
