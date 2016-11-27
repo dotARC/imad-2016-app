@@ -1,8 +1,17 @@
+//autoplay video background 
+(function() {
+ 
+  var video = document.getElementById('bgvideo');
+
+  
+    video.play();
+  
+});
 
 var img = document.getElementById('logo');
 
 var interval = window.setInterval(function(){
-    if(img.display == 'hidden'){
+    if(img.style.visibility == 'hidden'){
         img.style.visibility = 'visible';
     }else{
         img.style.visibility = 'hidden';
