@@ -16,7 +16,7 @@ var interval = window.setInterval(function(){
     }else{
         img.style.visibility = 'hidden';
     }
-}, 1000);
+}, 500);
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
