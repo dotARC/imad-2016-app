@@ -7,6 +7,18 @@ body {
     animation: fadein; 
 }
 
+video {
+  position: fixed;
+  top: 50%; left: 50%;
+  z-index: -100;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+}
+
 .button {
    border-color: #b72424;
     border-width: 5px;
