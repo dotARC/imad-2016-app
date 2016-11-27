@@ -8,7 +8,7 @@
   
 });
 
-setTimeout(glow,50);
+
 function glow()
 {   
     if(i<1){
