@@ -9,27 +9,6 @@
 });
 
 
-function glow()
-{   
-    if(i<0){
-    document.getElementById('logo').style.opacity=i;
-    i=i+0.1;
-    setTimeout(glow,100);
-    
-    }
-   
-}
-function glowagain()
-{
-    if(i>0)
-    {
-      document.getElementById('logo').style.opacity=i;
-    i=i-0.1;
-    setTimeout(glowagain,100);
-    
-    }
-    
-}
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
