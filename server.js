@@ -102,6 +102,10 @@ app.get('/hash/:input', function(req, res) {
    res.send(hashedString);
 });
 
+app.get('/ui/welcome.mp4', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'welcome.mp4'));
+});
+
 app.post('/create-user', function (req, res) {
    // username, password
    // {"username": "username", "password": "password"}
@@ -170,7 +174,7 @@ app.get('/check-login', function (req, res) {
 
 app.get('/logout', function (req, res) {
     delete req.session.auth;
-    res.redirect('/');
+    res.redirect('/home');
 });
 
 
