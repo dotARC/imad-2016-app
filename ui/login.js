@@ -127,7 +127,7 @@ function loadArticles () {
                     (${articleData[i].date.split('T')[0]})</p>`;
                 }
                 content += `</ul><div class="footer">
-                            <strong><a href="/post-article">Post an Artcile</a></strong>
+                            <strong><a href="/post-article"><h2>Post an Article</h2></a></strong>
                             </div>`;
                 articles.innerHTML = content;
             } else {
