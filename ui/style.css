@@ -60,7 +60,7 @@ video {
     cursor: pointer;
 }
 
-#submit , #login_btn , #register_btn {
+#submit , #login_btn , #register_btn ,#submit-article {
           background-color: #9E9E9E;
     font-family: -webkit-body;
     
