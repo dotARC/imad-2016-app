@@ -86,10 +86,13 @@ function loadLoginForm () {
 }
 
 function loadLoggedInUser (username) {
+     var logoutArea = document.getElementById('logout_area');
     var loginArea = document.getElementById('login_area');
-    loginArea.innerHTML = `
-        <h3> Hi <i>${username}</i></h3>
-        <a href="/logout">Logout</a>
+    loginArea.style.display = 'none';
+    
+    logoutArea.innerHTML = `
+        <h2> Hi <i>${username.style.color = 'orange'}</i></h2>
+        <a href="/logout"><button  class="button1">LOGOUT</button></a>
     `;
 }
 
@@ -123,7 +126,9 @@ function loadArticles () {
                     <a href="/article/${articleData[i].title}">${articleData[i].heading}</a>
                     (${articleData[i].date.split('T')[0]})</p>`;
                 }
-                content += "</ul>";
+                content += `</ul><div class="footer">
+                            <strong><a href="/post-article">Post an Artcile</a></strong>
+                            </div>`;
                 articles.innerHTML = content;
             } else {
                 articles.innerHTML('Oops! Could not load all articles!');
