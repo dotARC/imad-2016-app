@@ -251,6 +251,31 @@ app.post('/submit-comment/:articleName', function (req, res) {
     }
 });
 
+app.post('/post-article', function(req,res){
+  var heading = req.body.heading;
+  var content = req.body.content;
+
+  if(heading === '' || content === ''){
+      res.status(403).send();
+      return;
+    }
+
+  var title = heading.replace(/\s+/g, '-').toLowerCase();
+  var date = new Date();
+
+  pool.query('INSERT INTO "article" (title,page,heading,date,content) VALUES ($1, $2, $3,$4)',[title,page,heading,date,content], function(err,result){
+    if(err){
+           res.status(500).send(err.toString());
+       }else{
+           res.send();
+       }
+   });
+
+});
+
+app.get('/post-article',function(req,res){
+	res.sendFile(path.join(__dirname+'/ui/post-article.html'));
+});
 
 app.get('/ui/:fileName', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
