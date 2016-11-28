@@ -33,6 +33,7 @@ function createTemplate (data) {
     var htmlTemplate = `
     <html>
       <head>
+          <link rel="icon" href="/ui/LOGO1.ico" >
           <title>
               ${title}
           </title>
