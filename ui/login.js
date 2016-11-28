@@ -91,7 +91,7 @@ function loadLoggedInUser (username) {
     loginArea.style.display = 'none';
     
     logoutArea.innerHTML = `
-        <h2> Hi <i>${username.style.color = 'orange'}</i></h2>
+        <h2> Hi <i>${username}</i></h2>
         <a href="/logout"><button  class="button1">LOGOUT</button></a>
     `;
 }
