@@ -25,7 +25,6 @@ app.use(session({
 
 function createTemplate (data) {
     var title = data.title;
-    var page = data.page;
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
@@ -35,7 +34,7 @@ function createTemplate (data) {
       <head>
           <link rel="icon" href="/ui/LOGO1.ico" >
           <title>
-              ${title}
+              ${heading}
           </title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link href="/ui/style.css" rel="stylesheet" />
@@ -264,7 +263,7 @@ app.post('/post-article', function(req,res){
   var title = heading.replace(/\s+/g, '-').toLowerCase();
   var date = new Date();
 
-  pool.query('INSERT INTO "article" (title,page,heading,date,content) VALUES ($1, $2, $3,$4, $5)',[title,page,heading,date,content], function(err,result){
+  pool.query('INSERT INTO "article" (title,heading,date,content) VALUES ($1, $2, $3,$4)',[title,heading,date,content], function(err,result){
     if(err){
            res.status(500).send(err.toString());
        }else{
