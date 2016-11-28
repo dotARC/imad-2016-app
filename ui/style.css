@@ -19,6 +19,12 @@ video {
   background-size: cover;
 }
 
+hr {
+    background-color: dimgrey ;
+    color: dimgrey ;
+    border: solid 2px dimgrey;
+    
+}
 .button {
    border-color: #b72424;
     border-width: 5px;
